@@ -1,0 +1,19 @@
+@model List<Category>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<button type="button"><a asp-controller="Category" asp-action="Create">Create</a> </button>
+
+@{
+    foreach (var category in Model)
+    {
+        <div class="card">
+            <div class="container">
+                <h4><b><a asp-action="Detail" asp-route-id="@category.Id">@category.CategoryName</a></b></h4>
+            </div>
+        </div>
+    }
+}

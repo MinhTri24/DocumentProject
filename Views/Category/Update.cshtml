@@ -1,0 +1,13 @@
+@model DocumentProject.Views.ViewModels.CategoryUpdate
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Form create Category</h2>
+<form asp-action="Update" method="post">
+    <label asp-for="CategoryName">Name</label>
+    <input type="text" asp-for="CategoryName" value="@Model.CategoryName">
+    <button type="submit">Save</button>
+</form>
