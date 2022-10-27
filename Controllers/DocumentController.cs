@@ -1,10 +1,12 @@
 using DocumentProject.Data;
 using DocumentProject.Models;
 using DocumentProject.Views.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocumentProject.Controllers;
 
+[Authorize]
 public class DocumentController : Controller
 {
     private ApplicationDbContext _db;
@@ -104,7 +106,6 @@ public class DocumentController : Controller
     [HttpPost]
     public IActionResult Update(DocumentUpdate documentUpdate)
     {
- 
         var document = _db.Documents.Find(documentUpdate.Id);
         document.Author = documentUpdate.Author;
         document.Name = documentUpdate.Name;

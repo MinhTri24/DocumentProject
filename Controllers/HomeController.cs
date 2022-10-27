@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using DocumentProject.Data;
 using Microsoft.AspNetCore.Mvc;
 using DocumentProject.Models;
 
@@ -7,15 +8,17 @@ namespace DocumentProject.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly ApplicationDbContext _db;
+    public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
     {
         _logger = logger;
+        _db = db;
     }
 
     public IActionResult Index()
     {
-        return View();
+        List<Document> documents = _db.Documents.ToList();
+        return View(documents);
     }
 
     public IActionResult Privacy()
